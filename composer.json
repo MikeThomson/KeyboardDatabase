@@ -1,18 +1,23 @@
 {
-    "name": "mikethomson/skeleton-application",
-    "description": "Skeleton Application for ZF2",
-    "license": "BSD-3-Clause",
-    "keywords": [
-        "framework",
-        "zf2"
-    ],
-    "homepage": "http://framework.zend.com/",
-    "require": {
-        "php": ">=5.4.0",
-        "zendframework/zendframework": "2.3.*",
-        "doctrine/doctrine-orm-module": "0.*"
-    },
+	"name": "mikethomson/skeleton-application",
+	"description": "Skeleton Application for ZF2",
+	"license": "BSD-3-Clause",
+	"keywords": [
+		"framework",
+		"zf2"
+	],
+	"homepage": "http://framework.zend.com/",
+	"require": {
+		"php": ">=5.4.0",
+		"zendframework/zendframework": "2.3.*",
+		"doctrine/doctrine-orm-module": "0.*"
+	},
 	"require-dev" : {
-		"zendframework/zend-developer-tools" : "dev-master"
-	}
+		"zendframework/zend-developer-tools" : "dev-master",
+		"phpspec/phpspec": "2.0.*@dev"
+	},
+	"config": {
+		"bin-dir": "bin"
+	},
+	"autoload": {"psr-0": {"": "src"}}
 }
