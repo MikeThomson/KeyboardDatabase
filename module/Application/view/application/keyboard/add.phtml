@@ -1,0 +1,32 @@
+<?php
+$this->form->setAttribute('action', $this->url('keyboard', array('action' => 'add')));
+$this->form->prepare();
+?>
+<?= $this->form()->openTag($this->form) ?>
+<table>
+	<tr>
+		<td><?= $this->formLabel($this->form->get('name')) ?></td>
+		<td><?= $this->formText($this->form->get('name')) ?></td>
+	</tr>
+	<tr>
+		<td><?= $this->formLabel($this->form->get('price')) ?></td>
+		<td><?= $this->formText($this->form->get('price')) ?></td>
+	</tr>
+	<tr>
+		<td><?= $this->formLabel($this->form->get('backlighting')) ?></td>
+		<td><?= $this->formSelect($this->form->get('backlighting')) ?></td>
+	</tr>
+	<tr>
+		<td><?= $this->formLabel($this->form->get('switch')) ?></td>
+		<td><?= $this->formSelect($this->form->get('switch')) ?></td>
+	</tr>
+	<tr>
+		<td><?= $this->formLabel($this->form->get('additionalInfo')) ?></td>
+		<td><?= $this->formTextArea($this->form->get('additionalInfo')) ?></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><?= $this->formSubmit($this->form->get('submit')) ?></td>
+	</tr>
+</table>
+<?= $this->form()->closeTag($this->form) ?>

@@ -22,6 +22,17 @@ return array(
                     ),
                 ),
             ),
+            'keyboard' => [
+                'type' => 'segment',
+                'options' => [
+                    'route' => '/keyboard[/:action]',
+                    'defaults' => [
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Keyboard',
+                        'action' => 'index'
+                    ]
+                ]
+            ],
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -75,7 +86,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Keyboard' => 'Application\Controller\KeyboardController'
         ),
     ),
     'view_manager' => array(

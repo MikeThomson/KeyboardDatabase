@@ -12,5 +12,24 @@
  */
 
 return array(
-    // ...
+	'navigation' => array(
+		'default' => array(
+			array(
+				'label' => 'About',
+				'route' => 'home',
+			),
+			array(
+				'label' => 'Add Keyboard',
+				'route' => 'keyboard',
+				'params' => [
+					'action' => 'add'
+				]
+			),
+		)
+	),
+	'service_manager' => array(
+		'factories' => array(
+			'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+		),
+	),
 );
