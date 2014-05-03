@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 class KeywordEntry {
 
 	/**
-	 * For now we're using a surrogate key becuase keyword is a varchar, but this may change
+	 * For now we're using a surrogate key because keyword is a varchar, but this may change
 	 * @var int
 	 * @ORM\Id
 	 * @ORM\Column(type="integer")

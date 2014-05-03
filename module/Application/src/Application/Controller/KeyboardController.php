@@ -9,6 +9,7 @@
 
 namespace Application\Controller;
 
+use Application\Entity\Keyboard;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -16,6 +17,19 @@ use Application\Form\KeyboardForm;
 
 class KeyboardController extends AbstractActionController
 {
+	protected $em;
+
+	public function setEntityManager(EntityManager $em) {
+		$this->em = $em;
+	}
+
+	public function getEntityManager() {
+		if (null === $this->em) {
+			$this->em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
+		}
+		return $this->em;
+	}
+
 	public function indexAction()
 	{
 		return new ViewModel();
@@ -24,8 +38,18 @@ class KeyboardController extends AbstractActionController
 	public function addAction() {
 		$form = new KeyboardForm();
 
+		if($this->getRequest()->isPost()) {
+			$form->setData($this->params()->fromPost());
+			if($form->isValid()) {
+				$keyboard = new Keyboard($form->getData());
+				$this->getEntityManager()->persist($keyboard);
+				$this->getEntityManager()->flush();
+			}
+		}
+
 		return [
 			'form' => $form
 		];
 	}
+
 }

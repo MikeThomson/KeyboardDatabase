@@ -8,6 +8,7 @@
 
 namespace Application\Entity;
 
+use Application\Entity\Helper\ExchangeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,7 +16,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @package Application\Entity
  * @ORM\Entity
  */
-class Keyboard {
+class Keyboard implements Helper\ExchangeInterface {
+
+	use Helper\ExchangeTrait;
+	use Helper\RestrictedSetTrait;
 
 	/**
 	 * @var int
@@ -65,4 +69,19 @@ class Keyboard {
 	 * @ORM\OneToMany(targetEntity="KeywordEntry", mappedBy="keyboard")
 	 */
 	protected $keywords;
+
+	public function __construct($params = null) {
+		$publicVars = [
+			'name',
+			'price',
+			'backlighting',
+			'switch',
+			'additionalInfo',
+			'keywords'
+		];
+		$this->setExchangeables($publicVars);
+		$this->setSettables($publicVars);
+		if($params != null)
+			$this->exchangeArray($params);
+	}
 } 
