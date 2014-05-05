@@ -25,6 +25,13 @@ return array(
 					'action' => 'add'
 				]
 			),
+			array(
+				'label' => 'Keyboards',
+				'route' => 'keyboard',
+				'params' => [
+					'action' => 'list'
+				]
+			)
 		)
 	),
 	'service_manager' => array(

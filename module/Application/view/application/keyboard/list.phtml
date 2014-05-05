@@ -1,0 +1,17 @@
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Switch</th>
+		<th>Backlighting</th>
+	</tr>
+<?php foreach($this->keyboards as $keyboard) : ?>
+	<tr>
+		<td><?= $keyboard->name ?></td>
+		<td><?= $keyboard->price ?></td>
+		<td><?= $keyboard->switch ?></td>
+		<td><?= $keyboard->backlighting ?></td>
+	</tr>
+<?php endforeach; ?>
+
+</table>

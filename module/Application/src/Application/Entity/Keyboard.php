@@ -39,7 +39,7 @@ class Keyboard implements Helper\ExchangeInterface {
 	/**
 	 *
 	 * @var decimal
-	 * @ORM\Column(type="decimal")
+	 * @ORM\Column(type="decimal", scale=2)
 	 */
 	protected $price;
 
@@ -83,5 +83,9 @@ class Keyboard implements Helper\ExchangeInterface {
 		$this->setSettables($publicVars);
 		if($params != null)
 			$this->exchangeArray($params);
+	}
+
+	public function __get($var) {
+		return $this->{$var};
 	}
 } 

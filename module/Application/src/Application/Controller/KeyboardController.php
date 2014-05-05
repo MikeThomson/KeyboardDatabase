@@ -52,4 +52,19 @@ class KeyboardController extends AbstractActionController
 		];
 	}
 
+	public function searchAction() {
+		$form = new KeyboardForm();
+
+		return [
+			'form' => $form
+		];
+	}
+
+	public function listAction() {
+		$keyboards = $this->getEntityManager()->getRepository('Application\Entity\Keyboard')->findAll();
+
+		return [
+			'keyboards' => $keyboards
+		];
+	}
 }
