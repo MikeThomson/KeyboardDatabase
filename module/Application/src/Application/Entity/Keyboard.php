@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class Keyboard
  * @package Application\Entity
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Application\Repository\KeyboardRepository")
  */
 class Keyboard implements Helper\ExchangeInterface {
 

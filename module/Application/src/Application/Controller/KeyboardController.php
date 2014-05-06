@@ -14,6 +14,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 use Application\Form\KeyboardForm;
+use Application\Form\SearchForm;
 
 class KeyboardController extends AbstractActionController
 {
@@ -52,19 +53,20 @@ class KeyboardController extends AbstractActionController
 		];
 	}
 
-	public function searchAction() {
-		$form = new KeyboardForm();
-
-		return [
-			'form' => $form
-		];
-	}
-
 	public function listAction() {
-		$keyboards = $this->getEntityManager()->getRepository('Application\Entity\Keyboard')->findAll();
-
+		$form = new SearchForm();
+		$data = [];
+		if($this->getRequest()->isPost()) {
+			$form->setData($this->params()->fromPost());
+			if($form->isValid()) {
+				$data = $form->getData();
+			}
+		}
+		$keyboards = $this->getEntityManager()->getRepository('Application\Entity\Keyboard')->findFromSearch($data);
 		return [
+			'form' => $form,
 			'keyboards' => $keyboards
 		];
+
 	}
 }

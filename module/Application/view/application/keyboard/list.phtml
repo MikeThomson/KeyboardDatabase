@@ -1,3 +1,31 @@
+<?php
+$this->form->setAttribute('action', $this->url('keyboard', array('action' => 'list')));
+$this->form->prepare();
+?>
+<?= $this->form()->openTag($this->form) ?>
+<table>
+	<tr>
+		<td><?= $this->formLabel($this->form->get('name')) ?></td>
+		<td><?= $this->formText($this->form->get('name')) ?></td>
+	</tr>
+	<tr>
+		<td><?= $this->formLabel($this->form->get('price')) ?></td>
+		<td><?= $this->formText($this->form->get('price')) ?></td>
+	</tr>
+	<tr>
+		<td><?= $this->formLabel($this->form->get('backlighting')) ?></td>
+		<td><?= $this->formSelect($this->form->get('backlighting')) ?></td>
+	</tr>
+	<tr>
+		<td><?= $this->formLabel($this->form->get('switch')) ?></td>
+		<td><?= $this->formSelect($this->form->get('switch')) ?></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><?= $this->formSubmit($this->form->get('submit')) ?></td>
+	</tr>
+</table>
+<?= $this->form()->closeTag($this->form) ?>
 <table>
 	<tr>
 		<th>Name</th>
@@ -7,10 +35,10 @@
 	</tr>
 <?php foreach($this->keyboards as $keyboard) : ?>
 	<tr>
-		<td><?= $keyboard->name ?></td>
-		<td><?= $keyboard->price ?></td>
-		<td><?= $keyboard->switch ?></td>
-		<td><?= $keyboard->backlighting ?></td>
+		<td><?= $this->escapeHtml($keyboard->name) ?></td>
+		<td><?= $this->escapeHtml($keyboard->price) ?></td>
+		<td><?= $this->escapeHtml($keyboard->switch) ?></td>
+		<td><?= $this->escapeHtml($keyboard->backlighting) ?></td>
 	</tr>
 <?php endforeach; ?>
 

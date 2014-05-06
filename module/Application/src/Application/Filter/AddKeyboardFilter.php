@@ -9,6 +9,55 @@
 namespace Application\Filter;
 
 
-class AddKeyboardFilter {
+use Zend\InputFilter\InputFilter;
 
+class AddKeyboardFilter extends InputFilter{
+	public function __construct() {
+		$factory = new InputFactory();
+
+		$this->add($factory->createInput(array(
+			'name' => 'name',
+			'required' => true,
+			'filters'  => array(
+				array('name' => 'StripTags'),
+				array('name' => 'StringTrim'),
+			),
+			'validators' =>array(
+				array(
+					'name' => 'StringLength',
+					'options' => array(
+						'encoding' => 'UTF-8',
+						'min' => 1,
+						'max' => 255
+					),
+				)
+			)
+		)));
+
+		$this->add($factory->createInput(array(
+			'name' => 'price',
+			'required' => true,
+			'filters'  => array(
+				array('name' => 'Float'),
+			),
+		)));
+
+		$this->add($factory->createInput(array(
+			'name' => 'switch',
+			'required' => true
+		)));
+
+		$this->add($factory->createInput(array(
+			'name' => 'name',
+			'required' => false,
+		)));
+
+		$this->add($factory->createInput(array(
+			'name' => 'name',
+			'required' => true,
+			'filters'  => array(
+				array('name' => 'Int'),
+			),
+		)));
+	}
 } 
